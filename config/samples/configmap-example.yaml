@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  annotations:
+    config-propagator.sanadhis.com/propagate: "true"
+  name: config-propagator-propagate
+  namespace: default
+data:
+  example-key: "example-value"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  annotations:
+    config-propagator.sanadhis.com/propagate: "true"
+    config-propagator.sanadhis.com/target-namespaces: "default,kube-system"
+  name: config-propagator-propagate-2
+  namespace: default
+data:
+  example-key1: "example-value1"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  annotations:
+    config-propagator.sanadhis.com/propagate: "false"
+  name: config-propagator-do-not-propagate
+  namespace: default
+data:
+  example-other-key: "example-other-value"
