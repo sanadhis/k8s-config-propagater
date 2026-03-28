@@ -53,7 +53,8 @@ func (r *SecretsController) Reconcile(ctx context.Context, req ctrl.Request) (ct
 	if len(helpers.GetPropagationNamespaceFromSecretAnnotation(o)) > 0 {
 		namespaces = helpers.GetPropagationNamespaceFromSecretAnnotation(o)
 	} else {
-		namespaces, err := helpers.GetAllNamespaces(ctx, r.Client)
+		var err error
+		namespaces, err = helpers.GetAllNamespaces(ctx, r.Client)
 		if namespaces == nil || err != nil {
 			logger.Error(err, "Failed to list namespaces")
 			return ctrl.Result{}, err
