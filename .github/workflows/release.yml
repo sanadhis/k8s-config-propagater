@@ -1,11 +1,7 @@
 name: Release
 
 on:
-  workflow_run:
-    workflows:
-      - Lint
-      - Tests
-      - E2E Tests
+  push:
     branches:
       - main
     paths:
@@ -14,14 +10,20 @@ on:
       - 'go.mod'
       - 'go.sum'
       - 'config/**'
-    paths-ignore:
-      - 'test/**'
-    types:
-      - completed
 
 jobs:
+  lint:
+    uses: ./.github/workflows/lint.yml
+
+  tests:
+    uses: ./.github/workflows/tests.yml
+
+  e2e:
+    uses: ./.github/workflows/e2e.yml
+
   publish-and-release:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    needs: [lint, tests, e2e]
+    if: ${{ success() }}
     name: Run on Ubuntu
     runs-on: ubuntu-latest
     steps:
