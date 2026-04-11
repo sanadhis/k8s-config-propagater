@@ -1,0 +1,27 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-merge-conflict
+      - id: check-yaml
+        args: [--allow-multiple-documents]
+      - id: check-added-large-files
+  - repo: local
+    hooks:
+      - id: make-lint
+        name: Run make lint
+        entry: make lint
+        language: system
+        pass_filenames: false
+        files: \.(go)$
+      - id: make-fmt
+        name: Run make fmt
+        entry: make fmt
+        language: system
+        pass_filenames: false
+        files: \.(go)$
+files: .*
