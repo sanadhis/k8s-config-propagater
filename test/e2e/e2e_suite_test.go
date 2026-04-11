@@ -64,6 +64,8 @@ var _ = BeforeSuite(func() {
 	err = utils.LoadImageToKindClusterWithName(projectImage)
 	ExpectWithOffset(1, err).NotTo(HaveOccurred(), "Failed to load the manager(Operator) image into Kind")
 
+	configureKubectlKubeRC()
+
 	// The tests-e2e are intended to run on a temporary cluster that is created and destroyed for testing.
 	// To prevent errors when tests run in environments with CertManager already installed,
 	// we check for its presence before execution.
@@ -87,3 +89,18 @@ var _ = AfterSuite(func() {
 		utils.UninstallCertManager()
 	}
 })
+
+// Disable kubectl kuberc by default for test isolation.
+// This prevents local kubectl configurations from affecting test behavior.
+// To enable kuberc, set: KUBECTL_KUBERC=true
+func configureKubectlKubeRC() {
+	if os.Getenv("KUBECTL_KUBERC") != "true" {
+		By("disabling kubectl kuberc for test isolation")
+		err := os.Setenv("KUBECTL_KUBERC", "false")
+		ExpectWithOffset(1, err).NotTo(HaveOccurred(), "Failed to disable kubectl kuberc")
+		_, _ = fmt.Fprintf(GinkgoWriter,
+			"kubectl kuberc disabled for consistent test behavior (override with KUBECTL_KUBERC=true)\n")
+	} else {
+		_, _ = fmt.Fprintf(GinkgoWriter, "kubectl kuberc enabled (KUBECTL_KUBERC=true)\n")
+	}
+}
