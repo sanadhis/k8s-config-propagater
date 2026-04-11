@@ -18,7 +18,6 @@ package e2e
 
 import (
 	"fmt"
-	"os"
 	"os/exec"
 	"time"
 
@@ -46,13 +45,9 @@ var _ = Describe("Manager", Ordered, func() {
 	// enforce the restricted security policy to the namespace, installing CRDs,
 	// and deploying the controller.
 	BeforeAll(func() {
-		// Disable kuberc
-		err := os.Setenv("KUBECTL_KUBERC", "false")
-		Expect(err).NotTo(HaveOccurred(), "Failed to set KUBECTL_KUBERC environment variable")
-
 		By("creating manager namespace")
 		cmd := exec.Command("kubectl", "create", "ns", namespace)
-		_, err = utils.Run(cmd)
+		_, err := utils.Run(cmd)
 		Expect(err).NotTo(HaveOccurred(), "Failed to create namespace")
 
 		By("labeling the namespace to enforce the restricted security policy")
