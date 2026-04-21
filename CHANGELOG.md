@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/sanadhis/k8s-config-propagater/compare/v1.0.1...v1.0.2) (2026-04-21)
+
+
+### Bug Fixes
+
+* **deps:** update kubernetes monorepo to v0.35.4 ([f28fe90](https://github.com/sanadhis/k8s-config-propagater/commit/f28fe901bdf56b2a8959b26683cd4ff8706b0f64))
+
 ## [1.0.1](https://github.com/sanadhis/k8s-config-propagater/compare/v1.0.0...v1.0.1) (2026-04-13)
 
 
