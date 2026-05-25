@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.5](https://github.com/sanadhis/k8s-config-propagater/compare/v1.0.4...v1.0.5) (2026-05-22)
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/onsi/ginkgo/v2 to v2.29.0 ([cd7fa99](https://github.com/sanadhis/k8s-config-propagater/commit/cd7fa99cebd1ef1af3dd0e4392c2a175821ed3d9))
+* **deps:** update module github.com/onsi/gomega to v1.41.0 ([994300f](https://github.com/sanadhis/k8s-config-propagater/commit/994300f51752642aa31f00fd8062fd700bfe2b8f))
+
 ## [1.0.4](https://github.com/sanadhis/k8s-config-propagater/compare/v1.0.3...v1.0.4) (2026-05-15)
 
 
