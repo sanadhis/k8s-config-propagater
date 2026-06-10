@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.6](https://github.com/sanadhis/k8s-config-propagater/compare/v1.0.5...v1.0.6) (2026-06-10)
+
+
+### Bug Fixes
+
+* **deps:** update module golang.org/x/sync to v0.21.0 ([bc5e91a](https://github.com/sanadhis/k8s-config-propagater/commit/bc5e91a81965055e16dd6da62157d252f8061883))
+* **deps:** update module golang.org/x/sync to v0.21.0 ([7bae4ed](https://github.com/sanadhis/k8s-config-propagater/commit/7bae4ed4fb5033d05831a0c0853ce2600f3db54c))
+
 ## [1.0.5](https://github.com/sanadhis/k8s-config-propagater/compare/v1.0.4...v1.0.5) (2026-05-22)
 
 
